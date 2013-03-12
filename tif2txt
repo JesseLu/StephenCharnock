@@ -1,0 +1,9 @@
+#! /bin/sh 
+# Convert tif to txt using tesseract.
+# Implements batch convert of entire tif_raw directory.
+
+for f in `ls tif_raw`
+do
+    file=`basename $f .tif`
+    tesseract tif_raw/$file.tif txt_raw/$file
+done
