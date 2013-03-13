@@ -1,1 +1,27 @@
 Digitizing Stephen Charnock on the Attributes.
+
+ghostscript conversion of pdf to png:
+gs -q -dNOPAUSE -dBATCH -dSAFER -r300x300 -sDEVICE=pngmono -sOutputFile=png_raw/%04d.png -c save pop -f raw.pdf
+
+installing tesseract 3.00:
+sudo apt-get install libpng12-dev libjpeg62-dev libtiff4-dev
+sudo apt-get install gcc g++ automake
+
+wget http://www.leptonica.org/source/leptonlib-1.67.tar.gz
+tar -zxvf leptonlib-1.67.tar.gz
+cd leptonlib-1.67
+./configure
+make
+sudo make install
+sudo ldconfig
+
+wget http://tesseract-ocr.googlecode.com/files/tesseract-3.00.tar.gz
+tar -zxvf tesseract-3.00.tar.gz
+cd tesseract-3.00
+./runautoconf
+./configure
+make
+sudo ldconfig
+
+ocr run:
+./tif2txt
